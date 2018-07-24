@@ -1,20 +1,43 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<nav class="navbar fixed-top navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Simple Blog Post App</a>
+</nav>
+<div class="container-fluid simple-blog-main-body">
+  <div class="row">
+    <div class="col-md-3">
+      <form class="simple-blog-form">
+        <label for="newInputName" class="sr-only">Title</label>
+        <input [(ngModel)]="newBlog.name" name="newInputName" type="text" id="newInputName" class="form-control"
+               placeholder="Blog Title" required autofocus>
+        <button (click)="createBlog(newBlog.name)" class="btn btn-success" type="submit">Create</button>
+      </form>
+      <br>
+      <div class="list-group">
+        <button (click)="findBlogPostById(blog.id)" *ngFor="let blog of blogsList"
+                class="list-group-item list-group-item-action">
+          {{blog.name}}
+        </button>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div *ngIf="!selectedBlog">View Blog contents here ...</div>
+      <div *ngIf="selectedBlog">
+        <form class="simple-blog-form">
+          <h2>Blog Post</h2>
+          <label for="inputName" class="sr-only">Title</label>
+          <input [(ngModel)]="selectedBlog.name" name="inputName" type="text" id="inputName" class="form-control"
+                 placeholder="Blog Title" required autofocus>
+          <label for="inputDesc" class="sr-only">Description</label>
+          <input [(ngModel)]="selectedBlog.description" name="inputDesc" type="text" id="inputDesc" class="form-control"
+                 placeholder="Blog Description" required autofocus>
+          <label for="inputText" class="sr-only">Text</label>
+          <textarea [(ngModel)]="selectedBlog.text" name="inputText" type="text" id="inputText" class="form-control"
+                    placeholder="Blog Text" required autofocus rows="3"></textarea>
+          <button (click)="updateBlogPost(selectedBlog.name,selectedBlog.description,selectedBlog.text)"
+                  class="btn btn-primary" type="submit">Update
+          </button>
+          <button (click)="deleteBlogPost(selectedBlog.id)" class="btn btn-danger" type="submit">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
