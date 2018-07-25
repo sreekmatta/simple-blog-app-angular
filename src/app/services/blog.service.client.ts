@@ -1,10 +1,5 @@
 export class BlogServiceClient {
-  HEROKU_ENV = process.env.BACKEND_URL;
   BACKEND_URL = 'https://simpleblogappdemo.herokuapp.com/api/blog';
-
-  if(HEROKU_ENV) {
-    this.BACKEND_URL = process.env.BACKEND_URL + '/api/blog';
-  }
 
   createBlog(newBlog) {
     return fetch(this.BACKEND_URL, {
