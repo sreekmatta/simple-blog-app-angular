@@ -40,13 +40,13 @@ export class AppComponent implements OnInit {
       }, response => alert('Error creating blog post'));
   }
 
-  // findBlogPostById(blogId) {
-  //   this.blogService.findBlogById(blogId)
-  //     .then(response => {
-  //       this.selectedBlog = response;
-  //       this.updatedBlog = response;
-  //     }, response => alert('Error retrieving blog post'));
-  // }
+  findBlogPostById(blogId) {
+    this.blogService.findBlogById(blogId)
+      .then(response => {
+        this.selectedBlog = response;
+        this.updatedBlog = response;
+      }, response => alert('Error retrieving blog post'));
+  }
 
   updateBlogPost(name, description, text) {
     this.updatedBlog.name = name;
